@@ -29,19 +29,18 @@ def get_lat_lon_from_address(address_l):
 
 df = pd.read_excel(
     'C:/Users/user/Documents/GitHub/python_code_collecetion/sentou.xlsx')
-print(df)
 
 df['緯度'] = 0
 df['経度'] = 0
 
-print(df.head)
-
 for address in df['住所']:
-    print(address)
+    # print(address)
     lotlons = get_lat_lon_from_address(["'" + address + "'"])
-    print(lotlons)
+    # print(lotlons)
     print(lotlons[0][0])
     print(lotlons[0][1])
 
     df['緯度'] = lotlons[0][0]
     df['経度'] = lotlons[0][1]
+
+print(df)
