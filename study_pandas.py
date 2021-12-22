@@ -7,8 +7,8 @@ import pandas as pd
 df = pd.read_excel(
     'C:/Users/user/Documents/GitHub/python_code_collecetion/sentou.xlsx')
 
-df['緯度'] = 0
-df['経度'] = 0
+df['緯度'] = float(0)
+df['経度'] = float(0)
 
 small_df = df.iloc[0:4]
 print(small_df)
@@ -36,19 +36,27 @@ def get_lat_lon_from_address(address_l):
     return latlons
 
 
-for address in small_df['住所']:
-    # print(address)
-    lotlons = get_lat_lon_from_address(["'" + address + "'"])
-    # print(lotlons)
-    print(lotlons[0][0])
-    print(lotlons[0][1])
+for index, row in small_df.iterrows():
 
-    df['緯度'] = lotlons[0][0]
-    df['経度'] = lotlons[0][1]
+    print(row)
+    print(row.住所)
+    lotlons = get_lat_lon_from_address(["'" + row.住所 + "'"])
+
+    print(lotlons[0][0])
+    print(type(lotlons[0][0]))
+
+    print(lotlons[0][1])
+    print(type(lotlons[0][1]))
+
+    print(small_df.at[index, '緯度'])
+    print(small_df.at[index, '経度'])
+
+    small_df.at[index, '緯度'] = float(lotlons[0][0])
+    small_df.at[index, '経度'] = float(lotlons[0][1])
 
 print(small_df)
 
-sort_df = df.sort_values(by='経度')
+sort_df = small_df.sort_values(by='経度')
 print(sort_df)
 
 sort_df.to_excel('onsen_output01.xlsx', sheet_name='sheet_name')
