@@ -11,7 +11,8 @@ import pandas as pd
 # # このCSVには、県庁所在地の緯度・経度がlatitudeカラムとlongitudeカラムに入っている。
 # df_prefecture = pd.read_csv("../data/prefectural_capital_locations.csv")
 
-df = pd.read_excel('onsen_output01.xlsx')
+df = pd.read_excel(
+    'C:/Users/user/Documents/GitHub/python_code_collecetion/onsen_output01.xlsx')
 
 
 def visualize_locations(df,  zoom=4):
