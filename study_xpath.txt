@@ -1,0 +1,3 @@
+html/head/title/text()
+
+html/body/p[@class="title"]/b/text()
